@@ -1,0 +1,16 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+   
+}
+.header{
+    background-image: url(https://png.pngtree.com/thumb_back/fh260/background/20201014/pngtree-abstract-waving-particle-technology-background-abstract-gradient-design-template-for-brochures-image_416117.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    color: aliceblue;
+    padding: 20px;
+    
+}
