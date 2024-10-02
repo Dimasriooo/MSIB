@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitung Luas Persegi Panjang dan Lingkaran</title>
+</head>
+<body>
+    <h1>Ayo Kita Menghitung Luas Persegi Panjang</h1>
+
+    <!-- Input untuk menghitung luas persegi panjang -->
+    <h3>Luas Persegi Panjang</h3>
+    <label for="panjang">Panjang:</label>
+    <input type="number" id="panjang" placeholder=""><br><br>
+    <label for="lebar">Lebar:</label>
+    <input type="number" id="lebar" placeholder=""><br><br>
+    <button onclick="hitungLuasPersegiPanjang()">Hitung Luas Persegi Panjang</button>
+    <p id="hasilPersegiPanjang"></p>
+
+    <script>
+        // Function declaration untuk menghitung luas persegi panjang
+        function hitungLuasPersegiPanjang() {
+            const panjang = document.getElementById('panjang').value;
+            const lebar = document.getElementById('lebar').value;
+            if (panjang && lebar) {
+                const luas = panjang * lebar; // Menghitung luas
+                // Menampilkan hasil menggunakan template literals
+                document.getElementById('hasilPersegiPanjang').innerText = `Luas Persegi Panjang dengan panjang ${panjang} cm dan lebar ${lebar} cm adalah ${luas} cm` ;
+            } else {
+                document.getElementById('hasilPersegiPanjang').innerText = "Mohon masukkan panjang dan lebar terlebih dahulu sebelum mencoba.";
+            }
+        }
+    </script>
+</body>
+</html>
