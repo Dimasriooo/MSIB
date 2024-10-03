@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menghitung Gaji Bersih</title>
+    <script>
+        // Fungsi menggunakan if-else
+        function hitungGajiIfElse() {
+            let golongan = parseInt(document.getElementById("golongan").value);
+            let sudahMenikah = document.getElementById("statusMenikah").checked;
+            let gajiPokok;
+            let tunjangan = 0;
+
+            if (golongan === 1) {
+                gajiPokok = 10000000;
+            } else if (golongan === 2) {
+                gajiPokok = 15000000;
+                if (sudahMenikah) {
+                    tunjangan = 2000000;
+                }
+            } else if (golongan === 3) {
+                gajiPokok = 20000000;
+            } else {
+                document.getElementById("hasil").innerText = "Golongan tidak valid.";
+                return;
+            }
+
+            let gajiBersih = gajiPokok + tunjangan;
+            document.getElementById("hasil").innerText = "Gaji Bersih: Rp " + gajiBersih.toLocaleString();
+        }
+
+        // Fungsi menggunakan switch-case
+        function hitungGajiSwitchCase() {
+            let golongan = parseInt(document.getElementById("golongan").value);
+            let sudahMenikah = document.getElementById("statusMenikah").checked;
+            let gajiPokok;
+            let tunjangan = 0;
+
+            switch (golongan) {
+                case 1:
+                    gajiPokok = 10000000;
+                    break;
+                case 2:
+                    gajiPokok = 15000000;
+                    if (sudahMenikah) {
+                        tunjangan = 2000000;
+                    }
+                    break;
+                case 3:
+                    gajiPokok = 20000000;
+                    break;
+                default:
+                    document.getElementById("hasil").innerText = "Golongan tidak valid.";
+                    return;
+            }
+
+            let gajiBersih = gajiPokok + tunjangan;
+            document.getElementById("hasil").innerText = "Gaji Bersih: Rp " + gajiBersih.toLocaleString();
+        }
+    </script>
+</head>
+<body>
+    <h2>Kalkulator Gaji Bersih Karyawan PT Selamet sejahtera</h2>
+
+    <label for="golongan">Golongan:</label>
+    <select id="golongan">
+        <option value="1">Golongan 1</option>
+        <option value="2">Golongan 2</option>
+        <option value="3">Golongan 3</option>
+    </select>
+    <br><br>
+
+    <label for="statusMenikah">Status Menikah:</label>
+    <input type="checkbox" id="statusMenikah">
+    <label for="statusMenikah">Sudah Menikah</label>
+    <br><br>
+
+    <button onclick="hitungGajiIfElse()">Hitung dengan If-Else</button>
+    <button onclick="hitungGajiSwitchCase()">Hitung dengan Switch-Case</button>
+
+    <h3 id="hasil"></h3>
+</body>
+</html>
