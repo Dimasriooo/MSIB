@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // deklarasi dan inisiasi variable
+        let siswa = "budi santosi";
+        let nilai = 80; let grade = "";
+        //kode if multi kondisi pada slide sebelumnya
+        if(nilai > 85 && nilai <= 100) grade = "A";
+        else if(nilai > 75 && nilai <= 85) grade = "B"; 
+        else if(nilai >= 60 && nilai <= 75) grade = "C";
+        else if(nilai > 30 && nilai < 60) grade = "D";
+        else if(nilai >= 0 && nilai <= 30) grade = "E";
+        else grade = ""; 
+        //swith case
+        switch (grade) {
+            case "A" : predikat = "Memuaskan"; break;
+            case "B" : predikat = "Baik"; break;
+            case "C" : predikat = "Cukup"; break;
+            case "D" : predikat = "Kurang"; break;
+            case "E" : predikat = "Buruk"; break;
+            default : predikat = ""; break
+        }
+        //cetak data
+        document.write("Siswa bernama" + siswa + "dengan nilai" + nilai + " gradenya " + grade);
+    </script>
+</body>
+</html>
