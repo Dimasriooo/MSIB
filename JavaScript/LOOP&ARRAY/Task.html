@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabel Nilai Siswa</title>
+    <style>
+        /* Styling untuk tabel */
+        table {
+            width: 60%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #dddddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #fff;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Gaya untuk judul kolom */
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        /* Styling untuk header */
+        h2 {
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+
+        /* Styling untuk responsive table */
+        @media screen and (max-width: 768px) {
+            table {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Daftar Nilai Siswa</h2>
+
+    <script>
+        // Data siswa
+        let s1 = {'nama': 'Dimas', 'nilai': 76};
+        let s2 = {'nama': 'Indra', 'nilai': 89};
+        let s3 = {'nama': 'Elvina', 'nilai': 75};
+        let s4 = {'nama': 'Rizqu', 'nilai': 55};
+        let s5 = {'nama': 'Alif', 'nilai': 40};
+
+        let siswa = [s1, s2, s3, s4, s5];
+
+        // Function to determine grade and predikat
+        function getGrade(nilai) {
+            if (nilai >= 85) return 'A';
+            else if (nilai >= 75) return 'B';
+            else if (nilai >= 60) return 'C';
+            else if (nilai >= 30) return 'D';
+            else return 'E';
+        }
+
+        function getPredikat(grade) {
+            switch (grade) {
+                case 'A': return 'Sangat Baik';
+                case 'B': return 'Baik';
+                case 'C': return 'Cukup';
+                case 'D': return 'Kurang';
+                case 'E': return 'Sangat Kurang';
+                default: return '-';
+            }
+        }
+
+        // Generate table
+        let table = "<table><tr><th>No</th><th>Nama</th><th>Nilai</th><th>Keterangan</th><th>Grade</th><th>Predikat</th></tr>";
+        siswa.forEach((s, index) => {
+            let keterangan = s.nilai > 60 ? 'Lulus' : 'Tidak Lulus';
+            let grade = getGrade(s.nilai);
+            let predikat = getPredikat(grade);
+
+            table += `<tr>
+                        <td>${index + 1}</td>
+                        <td>${s.nama}</td>
+                        <td>${s.nilai}</td>
+                        <td>${keterangan}</td>
+                        <td>${grade}</td>
+                        <td>${predikat}</td>
+                      </tr>`;
+        });
+        table += "</table>";
+
+        // Display table in the document
+        document.write(table);
+    </script>
+
+</body>
+</html>
