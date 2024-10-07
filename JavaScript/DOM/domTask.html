@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM untuk file HTML</title>
+    <style>
+        /* Container utama yang membungkus semua gambar */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Setiap gambar dan tombol dibungkus dalam div ini */
+        .image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        /* Gambar dengan ukuran dan padding yang pas */
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        /* Menambahkan hover pada gambar agar ada efek */
+        .image-container img:hover {
+            transform: scale(1.05);
+            border-color: #888;
+        }
+
+        /* Button dengan tampilan yang lebih menarik */
+        .image-container button {
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        /* Button hover effect */
+        .image-container button:hover {
+            background-color: #45a049;
+        }
+
+        /* Menambahkan efek ketika gambar-container dihover */
+        .image-container:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Responsif: padding diatur lebih kecil untuk perangkat lebih kecil */
+        @media (max-width: 600px) {
+            .container {
+                gap: 15px;
+            }
+            .image-container {
+                padding: 8px;
+            }
+            .image-container button {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+
+    <script>
+        // Fungsi untuk menambahkan gambar dan tombol ke container
+        function tambahGambar() {
+            const container = document.querySelector('.container');
+            const gambarSources = [
+               './img/gambar1.jfif',
+                './img/gambar2.jpeg',
+                './img/gambar13.jpeg',
+                './img/gambar4.jfif',
+                './img/gambar5.jpeg',
+                './img/gambar6.jfif',
+                './img/gambar7.jpeg',
+                './img/gambar12.jpeg',
+                './img/gambar9.jpg',
+                './img/gambar10.png',
+                './img/gambar8.jpeg',
+                './img/gambar3.jpeg'
+            ];
+
+            const soundSources = [
+                './audio/audio1.mpeg',
+                './audio/audio2.mpeg',
+                './audio/audio3.mpeg',
+                './audio/audio4.mpeg',
+                './audio/audio5.mpeg',
+                './audio/audio6.mpeg',
+                './audio/audio7.mpeg',
+                './audio/audio8.mpeg',
+                './audio/audio9.mpeg',
+                './audio/audio10.mpeg',
+                './audio/audio11.mpeg',
+                './audio/audio12.mpeg'
+            ];
+
+            gambarSources.forEach((src, index) => {
+                // Membuat container untuk gambar dan tombol
+                const imageContainer = document.createElement('div');
+                imageContainer.classList.add('image-container');
+
+                // Membuat elemen gambar
+                const gambar = document.createElement('img');
+                gambar.src = src;
+                gambar.alt = `Gambar ${index + 1}`;
+                gambar.id = `gambar${index + 1}`;
+
+                // Membuat tombol untuk memutar suara
+                const button = document.createElement('button');
+                button.textContent = "Play Sound";
+                button.onclick = function() {
+                    // Cek jika ada elemen audio yang sedang diputar, stop dulu
+                    const currentAudio = document.querySelector('audio');
+                    if (currentAudio) {
+                        currentAudio.pause();
+                        currentAudio.remove();
+                    }
+
+                    // Buat elemen audio baru dan putar
+                    const audio = document.createElement('audio');
+                    audio.src = soundSources[index];
+                    audio.autoplay = true;
+
+                    // Tambahkan elemen audio ke body (tidak ditampilkan)
+                    document.body.appendChild(audio);
+                };
+
+                // Menambahkan gambar dan tombol ke dalam container
+                imageContainer.appendChild(gambar);
+                imageContainer.appendChild(button);
+                container.appendChild(imageContainer);
+            });
+        }
+
+        // Panggil fungsi tambahGambar saat halaman dimuat
+        window.onload = tambahGambar;
+    </script>
+</body>
+</html>

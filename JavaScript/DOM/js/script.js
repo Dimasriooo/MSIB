@@ -57,7 +57,7 @@ function tambahgambar() {
     if (!gambar) {
         gambar = document.createElement("img");
         gambar.id = "gambar"; // Pastikan ID konsisten
-        gambar.src = "./img/ptrjunior.jpeg";
+        gambar.src = "./img/gambar4.png";
         gambar.alt = "Gambar Default";
         container.appendChild(gambar);
     }
