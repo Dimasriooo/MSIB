@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contoh Gabungan Arrow function. Template strings, spread dan rest operator</title>
+</head>
+<body>
+    <h1>
+        Hasil Dari Javascript
+    </h1>
+    <div id="Output"></div>
+    <script type="module" src="/JavaScript/ES6/Gabungan.html"></script>
+
+    <script>
+        // Arrow function untuk menghitung total rata rata dari array angka
+        const hitungStastistik = (...angka) =>{
+            const total = angka.reduce((acc, current) => acc + current,0);
+            const rataRata = total / angka.length;
+            return { total, rataRata};
+        };
+
+        //menggunakan spread operator untuk menggabungkann array angka
+        const angka1 = [1,2,3];
+        const angka2 = [4,5,6];
+        const semuaAngka = [...angka1, ...angka2];
+
+        //menggunakan template string untuk menampilkan hasil
+        const statistik = hitungStastistik(...semuaAngka);
+        const output = `
+                <p>Angka: ${semuaAngka}</p>
+                <p>Total: ${statistik.total}</p>
+                <p>Rata-Rata: ${statistik.rataRata}</p>
+            `;
+        //menampilkan hasil kedalam element html
+        document.getElementById('output').innerHTML = output;
+    </script>
+</body>
+</html>
