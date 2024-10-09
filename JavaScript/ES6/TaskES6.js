@@ -11,3 +11,4 @@ const hitungTotal = (nama, ...nilai) => {
 
 // Contoh penggunaan fungsi
 hitungTotal('Dimas Rio', 10, 20, 30);
+hitungTotal('Madun', 40, 50, 60);
